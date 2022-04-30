@@ -12,7 +12,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/abadran6/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -115,7 +115,9 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/dotfiles/alii.sh
-source ~/proprietary.sh
+if [[ -f "$HOME/proprietary.sh" ]]; then
+  source ~/proprietary.sh
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
