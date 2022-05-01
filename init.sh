@@ -35,10 +35,6 @@ if [[ $WET_RUN != true ]]; then
   echo "In dry-run mode"
 fi
 
-# for each file in here
-# if it's a file (not directory) and starts with .
-#   if no files/symlinks for it in the home dir exist
-#      create a symlink in the home dir pointing to here
 for file in .*; do
   if [[ ! -d "$file" ]]; then
     if [[ ! -d "$HOME/$file" ]]; then
