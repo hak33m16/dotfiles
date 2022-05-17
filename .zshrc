@@ -28,13 +28,26 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+case $OSTYPE in
+  "darwin")
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  ;;
+  "linux-gnu")
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  ;;
+  *)
+  echo "Unknown OS, no OS-dependent setup will be done"
+  ;;
+esac
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 autoload -Uz compinit && compinit
-source <(command kubectl completion zsh)
+which kubectl > /dev/null
+if [[ $? -eq 0 ]]; then
+  source <(command kubectl completion zsh)
+fi
 
 # zprof
