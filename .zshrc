@@ -29,14 +29,14 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 case $OSTYPE in
-  "darwin")
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  "darwin"*)
+  eval "$(/usr/local/bin/brew shellenv)"
   ;;
   "linux-gnu")
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
   *)
-  echo "Unknown OS, no OS-dependent setup will be done"
+  echo "Unknown OS ($OSTYPE), no OS-dependent setup will be done"
   ;;
 esac
 
