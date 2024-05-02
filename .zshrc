@@ -51,3 +51,4 @@ if [[ $? -eq 0 ]]; then
 fi
 
 # zprof
+export PATH="/usr/local/opt/libpq/bin:$PATH"
